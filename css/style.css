@@ -4,8 +4,9 @@
   padding:0;
 }
 
+
 header{
-  border-bottom: 1px solid #1b85dc;
+  border-bottom: 1px solid #a03269;
   height: 10vh;
   display:flex;
 }
@@ -41,8 +42,13 @@ main{
   text-decoration: none;
 }
 
+.card-body{
+  background-color: rgb(244, 235, 222);
+  border: 1px solid #a03269;
+}
+
 #modal-view{
-  border:1px solid #1b85dc;
+  border:1px solid #a03269;
   position: absolute;
   display:none;
   width: 90vw;
@@ -55,7 +61,7 @@ main{
 }
 
 #modal{
-  border:1px solid #1b85dc;
+  border:1px solid #a03269;
   position: absolute;
   padding:2vh 2vw;
   display:none;

@@ -10,8 +10,8 @@ let modalView = document.querySelector('#modal-view'); //Modal para exibição d
 let notes = document.querySelector('#notes');//Lista divs com dados das notas
 let btnSaveNote = document.querySelector("#btn-save-note"); //icone para salvar nota
 let btnCloseNote = document.querySelector("#btn-close-note");//icone para fechar modal de edição de nota.
-const btnEditNote = document.querySelector("#btn-edit-note");
-const btnDeleteNote = document.querySelector("#btn-delete-note");
+let btnEditNote = document.querySelector("#btn-edit-note");
+let btnDeleteNote = document.querySelector("#btn-delete-note");
 
 
 addNote.addEventListener("click", (evt)=>{
@@ -165,12 +165,29 @@ const listNotes = () => {
       document.querySelector('#input-title').value = note.title;
       document.querySelector('#input-content').value = note.content;
   })
-
-    btnDeleteNote.addEventListener("click", (evt)=>{
-      evt.preventDefault();
-      
-    })
-
   }
+
+  btnDeleteNote.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    console.log("Botão de exclusão clicado.");
+
+    if (confirm("Tem certeza que deseja deletar esta nota?")) {
+        let noteId = document.querySelector('#input-id').value;
+        console.log("ID da nota a ser deletada:", noteId);
+        deleteNoteById(noteId);
+        closeModal.click(); 
+    }
+});
+
+const deleteNoteById = (id) => {
+    let notes = loadNotes();
+    notes = notes.filter(note => note.id != id);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    console.log("Nota deletada.");
+    listNotes(); 
+};
+
+
+
 
 listNotes();
